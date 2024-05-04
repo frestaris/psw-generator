@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="myButton">Press to Generate</button>
+    <div id="result">New Password...</div>
+    <script>
+      const latinUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const latinLower = "abcdefghijklmnopqrstuvwxyz";
+      const nums = "0123456789";
+      const symbols = "!@#$&-?";
+      const alphabet = latinUpper + latinLower + nums + symbols;
+      const button = document.getElementById("myButton");
+      const result = document.getElementById("result");
+
+      function generateRandomPassword(length) {
+        let password = "";
+        for (let i = 0; i < length; i++) {
+          password += alphabet[Math.floor(Math.random() * alphabet.length)];
+        }
+        return password;
+      }
+
+      button.addEventListener("click", function () {
+        const newPassword = generateRandomPassword(10); // Password length is 10 characters
+        result.innerText = newPassword;
+        result.style.color = "black";
+      });
+    </script>
+  </body>
+</html>
